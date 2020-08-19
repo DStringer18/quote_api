@@ -56,8 +56,10 @@ app.post('/api/quotes', (req, res) => {
 
 //delete a quote
 app.delete('/api/quotes/:id', (req, res) => {
-  const index = getElementById(req.params.id, quotes);
-  if (index !== -1){
+  console.log(req.params.id)
+  const quote = quotes.find(quote => quote.id === req.params.id);
+  if (quote) {
+    const index = quotes.indexOf(quote);
     quotes.splice(index, 1);
     res.send( { quote: quotes[index] });
   } else {

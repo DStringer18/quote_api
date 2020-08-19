@@ -10,7 +10,7 @@ const resetQuotes = () => {
 
 deleteByIdButton.addEventListener('click', () => {
   const id = document.getElementById('id').value;
-  fetch(`/api/quotes/${id}`,{ method: 'DELETE' })
+  fetch(`/api/quotes/${id}`, { method: 'DELETE' })
   .then(response => {
     return response.json()
   })
