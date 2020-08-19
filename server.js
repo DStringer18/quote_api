@@ -5,6 +5,7 @@ const getElementById = (id, elementList) => {
     return element.id === Number(id);
   });
 };
+
 const { quotes } = require('./data');
 const { getRandomElement } = require('./utils');
 
@@ -36,16 +37,6 @@ app.get('/api/quotes', (req, res) => {
   }
 });
 
-//get a quote by ID
-app.get('/api/quotes/:id', (req, res) => {
-  const idQuote = getElementById(req.query, quotes);
-  if (idQuote) {
-    res.send({ quotes: idQuote})
-  } else {
-    res.status(404).send();
-  }
-})
-
 //post a new quote
 app.post('/api/quotes', (req, res) => {
   const receivedQuote = req.query.quote;
@@ -64,3 +55,12 @@ app.post('/api/quotes', (req, res) => {
 })
 
 //delete a quote
+app.delete('/api/quotes/:id', (req, res) => {
+  const index = getElementById(req.params.id, quotes);
+  if (index !== -1){
+    quotes.splice(index, 1);
+    res.send( { quote: quotes[index] });
+  } else {
+    res.status(404).send( 'There is no quote with that ID.');
+  }
+})
