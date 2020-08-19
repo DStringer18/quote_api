@@ -7,7 +7,7 @@ Currently I am trying to implement a delete method which has the following featu
   3. returns a confirmation message with the quote that has been deleted 
     -or- returns an error message if a quote with the submitted ID does not exist.
     
-Currently I'm having the current issues:
+My current issues:
   1. The fetch method in the deleteByIdButton event listener function has two .then statements, chained together. 
   The second '.then' statement uses a callback with the parameter of '({ quote })', and the console reports the following error: <br />
     `delete-quote.js:22 Uncaught (in promise)`  <br />
