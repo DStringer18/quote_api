@@ -1,7 +1,7 @@
 # quote_api
 Work In Progress improvement of a Codecademy challenge project
 
-Currently I am trying to implement a delete method which has the following features:
+I am trying to implement a delete method which has the following features:
   1. has its own html page
   2. removes quotes by ID from the quotes array
   3. returns a confirmation message with the quote that has been deleted 
