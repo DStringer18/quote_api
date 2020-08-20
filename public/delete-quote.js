@@ -12,9 +12,9 @@ deleteByIdButton.addEventListener('click', () => {
   const id = document.getElementById('id').value;
   fetch(`/api/quotes/${id}`, { method: 'DELETE' })
   .then(response => {
+    console.log(response)
     return response.json()
-  })
-  .then(({ quote }) => {
+  }).then(({ quote }) => {
     console.log(quote)
     const deletedQuote = document.createElement('div');
     deletedQuote.innerHTML = `

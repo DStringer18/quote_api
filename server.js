@@ -7,7 +7,7 @@ const getElementById = (id, elementList) => {
 };
 
 const { quotes } = require('./data');
-const { getRandomElement } = require('./utils');
+const { getRandomElement, getIndexById } = require('./utils');
 
 const PORT = process.env.PORT || 4001;
 
@@ -56,13 +56,15 @@ app.post('/api/quotes', (req, res) => {
 
 //delete a quote
 app.delete('/api/quotes/:id', (req, res) => {
-  console.log(req.params.id)
-  const quote = quotes.find(quote => quote.id === req.params.id);
-  if (quote) {
-    const index = quotes.indexOf(quote);
+  const index = getIndexById(req.params.id, quotes)
+  //const quote = quotes.find(quote => quote.id === req.params.id);
+  if (index !== -1) {
+    //const index = quotes.indexOf(quote);
     quotes.splice(index, 1);
+    console.log(index)
     res.send( { quote: quotes[index] });
   } else {
     res.status(404).send( 'There is no quote with that ID.');
   }
 })
+
